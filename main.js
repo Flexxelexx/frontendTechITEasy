@@ -161,3 +161,104 @@ const inventory = [
     sold: 8,
   },
 ];
+
+
+// opdracht 1A
+const tvTypes = inventory.map((tv) => {
+  return tv.type
+})
+
+console.log(tvTypes)
+
+// opdracht 1B
+const soldOutTvs = inventory.filter((tv) => {
+  if (tv.originalStock <= tv.sold) {
+    return true
+  }
+})
+
+console.log(soldOutTvs)
+
+// opdracht 1C
+const ambiLight = inventory.filter((tv) => {
+  if (tv.options.ambiLight === true) {
+    return true
+  }
+})
+
+// opdracht 1D
+const sortPriceAll = inventory.sort((a,b) => {
+  return a.price - b.price
+})
+
+console.log(sortPriceAll)
+
+const soldTvsContainer = document.getElementById("sold-tvs")
+const boughtTvsContainer = document.getElementById("bought-tvs")
+const toBeSoldTvsContainer = document.getElementById("to-be-sold-tvs")
+const tvBrandsContainer = document.getElementById("brand-tvs")
+
+// opdracht 2A
+function tvsSold (tv) {
+  let outcome = 0;
+  for (let i = 0; i < tv.length; i++) {
+    outcome += tv[i].sold;
+  } return outcome
+}
+
+const soldTvs = tvsSold(inventory)
+
+// opdracht 2B
+
+// opdracht 2C
+function tvsBought (tv) {
+  let outcome = 0;
+  for (let i = 0; i < tv.length; i++) {
+    outcome += tv[i].originalStock;
+  } return outcome
+}
+
+const boughtTvs = tvsBought(inventory)
+
+
+
+// opdracht 2D
+
+
+
+// opdracht 2E
+const toBeSold = () => {
+  return boughtTvs - soldTvs
+}
+
+soldTvsContainer.textContent = `Amount of TVs sold = ${soldTvs}`
+boughtTvsContainer.textContent = `Amount of TVs bought = ${boughtTvs}`
+toBeSoldTvsContainer.textContent = `Amount of TVs yet to be sold = ${toBeSold()}`
+
+
+// opdracht 3A
+
+const tvBrands = inventory.map((tv) => {
+  return tv.brand
+})
+
+console.log(tvBrands)
+
+
+// opdracht 3B
+
+
+function createList (arr) {
+  const tvBrandsContainer = document.getElementById('tv-brands-container');
+  arr.map((tv) => {
+    tvBrandsContainer.innerHTML += `<li>${tv.brand}</li>`
+  })
+}
+
+createList(inventory)
+
+function createTv (arr) {
+  arr.map((tv) => {
+    return tv.brand + tv.type + tv.name
+  })
+}
