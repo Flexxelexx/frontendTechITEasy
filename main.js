@@ -196,7 +196,7 @@ console.log(sortPriceAll)
 const soldTvsContainer = document.getElementById("sold-tvs")
 const boughtTvsContainer = document.getElementById("bought-tvs")
 const toBeSoldTvsContainer = document.getElementById("to-be-sold-tvs")
-const tvBrandsContainer = document.getElementById("brand-tvs")
+
 
 // opdracht 2A
 function tvsSold (tv) {
@@ -235,7 +235,6 @@ soldTvsContainer.textContent = `Amount of TVs sold = ${soldTvs}`
 boughtTvsContainer.textContent = `Amount of TVs bought = ${boughtTvs}`
 toBeSoldTvsContainer.textContent = `Amount of TVs yet to be sold = ${toBeSold()}`
 
-
 // opdracht 3A
 
 const tvBrands = inventory.map((tv) => {
@@ -257,8 +256,34 @@ function createList (arr) {
 
 createList(inventory)
 
+// opdracht 4A
+const tvTotalContainer = document.getElementById('tv-total-container');
+
 function createTv (arr) {
-  arr.map((tv) => {
-    return tv.brand + tv.type + tv.name
-  })
+   return `${arr.brand} ${arr.type} ${arr.name}`
 }
+tvTotalContainer.innerHTML = `<li> ${createTv(inventory[1])} </li>`
+
+
+
+// opdracht 4B
+const tvPriceContainer = document.getElementById('tv-price-container');
+
+function createTvPrice (arr) {
+  return `€${arr.price}`
+}
+tvPriceContainer.innerHTML += `<li>${createTvPrice(inventory[1])}</li>`
+
+createTvPrice(inventory)
+
+
+// opdracht 4C
+const screenSizesContainer = document.getElementById('screenSizes-container');
+
+function screenSizes (arr) {
+  return `${arr.brand} ${arr.availableSizes}`
+}
+
+screenSizesContainer.innerHTML += `<li>${screenSizes(inventory[1])}</li>`
+
+screenSizes(inventory)
